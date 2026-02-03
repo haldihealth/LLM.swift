@@ -1278,6 +1278,7 @@ open class LLM: ObservableObject {
         from path: String,
         stopSequence: String? = nil,
         history: [Chat] = [],
+        gpuLayers: Int32 = 999,
         seed: UInt32 = .random(in: .min ... .max),
         topK: Int32 = 40,
         topP: Float = 0.95,
@@ -1304,6 +1305,8 @@ open class LLM: ObservableObject {
         var modelParams = llama_model_default_params()
         #if targetEnvironment(simulator)
         modelParams.n_gpu_layers = 0
+        #else
+        modelParams.n_gpu_layers = gpuLayers 
         #endif
         guard let model = llama_model_load_from_file(self.path, modelParams) else {
             return nil
@@ -1340,6 +1343,7 @@ open class LLM: ObservableObject {
         from url: URL,
         stopSequence: String? = nil,
         history: [Chat] = [],
+        gpuLayers: Int32 = 999,
         seed: UInt32 = .random(in: .min ... .max),
         topK: Int32 = 40,
         topP: Float = 0.95,
@@ -1353,6 +1357,7 @@ open class LLM: ObservableObject {
             from: url.path,
             stopSequence: stopSequence,
             history: history,
+            gpuLayers: gpuLayers,
             seed: seed,
             topK: topK,
             topP: topP,
@@ -1367,6 +1372,7 @@ open class LLM: ObservableObject {
     public convenience init?(
         from url: URL,
         template: Template,
+        gpuLayers: Int32 = 999, 
         history: [Chat] = [],
         seed: UInt32 = .random(in: .min ... .max),
         topK: Int32 = 40,
@@ -1380,6 +1386,7 @@ open class LLM: ObservableObject {
         self.init(
             from: url.path,
             stopSequence: template.stopSequence,
+            gpuLayers: gpuLayers,
             history: history,
             seed: seed,
             topK: topK,
