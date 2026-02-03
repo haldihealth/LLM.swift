@@ -1386,8 +1386,8 @@ open class LLM: ObservableObject {
         self.init(
             from: url.path,
             stopSequence: template.stopSequence,
-            gpuLayers: gpuLayers,
             history: history,
+            gpuLayers: gpuLayers,
             seed: seed,
             topK: topK,
             topP: topP,
