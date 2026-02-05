@@ -318,11 +318,11 @@ public actor LLMCore {
         llama_memory_seq_rm(llama_get_memory(context), -1, -1, -1)
     }
     
-    func generateResponseStream(from input: String, thinking: ThinkingMode = .none) -> AsyncStream<String> {
+    public func generateResponseStream(from input: String, thinking: ThinkingMode = .none) -> AsyncStream<String> {
         generateResponseStreamWithThinking(from: input, thinking: thinking).response
     }
     
-    func generateThinkingStream(from input: String) -> AsyncStream<String> {
+    public func generateThinkingStream(from input: String) -> AsyncStream<String> {
         generateResponseStreamWithThinking(from: input, thinking: .enabled).thinking
     }
     
