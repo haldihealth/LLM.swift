@@ -326,7 +326,7 @@ public actor LLMCore {
         generateResponseStreamWithThinking(from: input, thinking: .enabled).thinking
     }
     
-    func generateResponseStreamWithThinking(from input: String, thinking thinkingMode: ThinkingMode = .none) -> (thinking: AsyncStream<String>, response: AsyncStream<String>) {
+    public func generateResponseStreamWithThinking(from input: String, thinking thinkingMode: ThinkingMode = .none) -> (thinking: AsyncStream<String>, response: AsyncStream<String>) {
         var thinkingContinuation: AsyncStream<String>.Continuation!
         var responseContinuation: AsyncStream<String>.Continuation!
         
