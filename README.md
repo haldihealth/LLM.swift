@@ -1,3 +1,15 @@
+# haldihealth/LLM.swift (Sentinel Custom Fork)
+
+This is a custom fork built specifically for the **Sentinel** project to support the MedGemma-4B model in the Kaggle Impact Competition. 
+
+### Key Sentinel Modifications:
+- Added real-time token streaming support for fluid AI generation.
+- Expanded context window and tuned repeat penalty heuristics.
+- Optimized Metal Performance Shaders parameters specifically for `medgemma-1.5-4b-it.Q4_K_M.gguf`. 
+
+*(See the main Sentinel repository for the full application).*
+---
+
 # LLM.swift
 
 [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Feastriverlee%2FLLM.swift%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/eastriverlee/LLM.swift)
